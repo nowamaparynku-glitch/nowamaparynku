@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finansowy Reset. Instrukcja na nowe czasy. | Kamil</title>
+  <meta name="description" content="Odkryj, jak zbudować system finansowy, który pracuje na Twoją wolność – bez strachu, bez szumu, na własnych zasadach." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg:     #060c1c;
+      --bg2:    #0A1128;
+      --bg3:    #0d1535;
+      --gold:   #FFD700;
+      --gold2:  #c9a800;
+      --gold3:  #ffe680;
+      --text:   #F0F0F0;
+      --muted:  rgba(240,240,240,0.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle noise */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9000; opacity: 0.28;
+    }
+
+    /* ── Typography helpers ── */
+    .gold-text {
+      background: linear-gradient(135deg, #ffe680 0%, #FFD700 45%, #c9972a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .shimmer {
+      background: linear-gradient(90deg, #ffe680, #FFD700, #ffe680, #c9972a, #FFD700, #ffe680);
+      background-size: 300% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 4.5s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: -300% center; } }
+
+    /* ── Layout helpers ── */
+    .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.28), transparent); }
+    .dot-grid  { background-image: radial-gradient(circle, rgba(255,215,0,0.055) 1px, transparent 1px); background-size: 38px 38px; }
+    .glow      { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(90px); }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold2);
+    }
+    .hr-d { display: flex; align-items: center; gap: 16px; }
+    .hr-d::before { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.28)); }
+    .hr-d::after  { content:''; flex:1; height:1px; background: linear-gradient(90deg, rgba(255,215,0,0.28), transparent); }
+
+    /* ── Nav ── */
+    .nav-bar {
+      background: rgba(6,12,28,0.88);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(255,215,0,0.07);
+    }
+
+    /* ── Buttons ── */
+    .btn-gold {
+      background: linear-gradient(135deg, #FFD700, #c9a800);
+      color: #060c1c;
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      letter-spacing: .025em;
+      position: relative; overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-gold::before {
+      content: ''; position: absolute; top:0; left:-100%; width:100%; height:100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transition: left .5s;
+    }
+    .btn-gold:hover::before { left: 100%; }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(255,215,0,.3); }
+    .btn-ghost {
+      border: 1px solid rgba(255,215,0,.28); color: var(--gold3);
+      font-family: 'Montserrat', sans-serif; font-weight: 600;
+      transition: all .25s ease;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(255,215,0,.07); }
+
+    /* ── Cards ── */
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,215,0,.1);
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .card:hover { border-color: rgba(255,215,0,.32); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(255,215,0,.06); }
+
+    .icon-ring {
+      width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── Check list ── */
+    .check-li { display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; }
+    .check-li::before {
+      content: ''; flex-shrink:0; width:18px; height:18px; margin-top:3px;
+      background: rgba(255,215,0,.08) url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L3.8 6.5L9 1' stroke='%23FFD700' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/10px;
+      border: 1px solid rgba(255,215,0,.28); border-radius: 50%;
+    }
+
+    /* ── Pillar cards (6-grid) ── */
+    .pillar-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 3rem; line-height: 1;
+      color: rgba(255,215,0,.08);
+      position: absolute; top: 20px; right: 24px;
+      transition: color .3s;
+    }
+    .card:hover .pillar-num { color: rgba(255,215,0,.14); }
+
+    /* ── Author placeholder ── */
+    .author-avatar {
+      width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #1a2a5e, #0d1535);
+      border: 2px solid rgba(255,215,0,.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .author-avatar-ring {
+      position: absolute; inset: -10px; border-radius: 50%;
+      border: 1px solid rgba(255,215,0,.1);
+    }
+    .author-avatar-ring2 {
+      position: absolute; inset: -22px; border-radius: 50%;
+      border: 1px solid rgba(255,215,0,.05);
+    }
+
+    /* ── Credential pills ── */
+    .cred-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,.06); border: 1px solid rgba(255,215,0,.15);
+      border-radius: 99px; padding: 6px 14px;
+      font-family: 'Inter', sans-serif; font-size: .8rem;
+      color: rgba(240,240,240,.72);
+    }
+    .cred-pill span { color: var(--gold); font-size: .9rem; }
+
+    /* ── Testimonial ── */
+    .tcard {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: border-color .3s;
+    }
+    .tcard:hover { border-color: rgba(255,215,0,.2); }
+
+    /* ── FAQ ── */
+    details summary { cursor:pointer; list-style:none; user-select:none; }
+    details summary::-webkit-details-marker { display:none; }
+    .faq-icon { transition: transform .3s ease; display:inline-block; line-height:1; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    details[open] .faq-q   { color: var(--gold3); }
+    .faq-body { max-height:0; overflow:hidden; transition: max-height .4s ease; }
+    details[open] .faq-body { max-height:400px; }
+
+    /* ── Offer box ── */
+    .offer-box {
+      background: linear-gradient(135deg, rgba(26,42,94,.88), rgba(13,21,53,.95));
+      border: 1px solid rgba(255,215,0,.3);
+      box-shadow: 0 0 80px rgba(255,215,0,.07), inset 0 1px 0 rgba(255,215,0,.12);
+    }
+
+    /* ── Mockup ── */
+    .mockup-card {
+      background: linear-gradient(145deg, #1a2a5e, #0d1535, #060c1c);
+      border: 1px solid rgba(255,215,0,.2);
+      box-shadow: 0 0 60px rgba(255,215,0,.07), inset 0 1px 0 rgba(255,215,0,.1);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes floatY  { 0%,100% { transform:translateY(0);    } 50% { transform:translateY(-10px); } }
+    @keyframes dotPulse{ 0%,100% { opacity:1; } 50% { opacity:.3; } }
+
+    .anim-up   { animation: fadeUp .75s ease both; }
+    .anim-flt  { animation: floatY 5.5s ease-in-out infinite; }
+    .anim-dot  { animation: dotPulse 2s ease-in-out infinite; }
+
+    .d1 { animation-delay:.1s;  } .d2 { animation-delay:.25s; }
+    .d3 { animation-delay:.4s;  } .d4 { animation-delay:.55s; }
+
+    /* scroll reveal */
+    .rv { opacity:0; transform:translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.on { opacity:1; transform:translateY(0); }
+    .rv1 { transition-delay:.05s; } .rv2 { transition-delay:.13s; }
+    .rv3 { transition-delay:.21s; } .rv4 { transition-delay:.29s; }
+    .rv5 { transition-delay:.37s; } .rv6 { transition-delay:.45s; }
+
+    /* pull-quote */
+    .pullquote { background:rgba(255,215,0,.04); border-left:3px solid rgba(255,215,0,.45); }
+    .big-q { font-family:'Montserrat',sans-serif; font-size:4rem; line-height:.55; color:rgba(255,215,0,.11); font-weight:900; }
+
+    /* stat box */
+    .stat-box {
+      background: rgba(255,215,0,.05); border: 1px solid rgba(255,215,0,.12);
+      border-radius: 16px; padding: 20px 24px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 2rem; line-height: 1.1;
+      background: linear-gradient(135deg, #ffe680, #FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar fixed top-0 left-0 right-0 z-50" id="mainNav" style="transition:transform .3s ease;">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <a href="#" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#FFD700,#c9a800);">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L10.5 6H15L11.5 9.5L13 14L8 11.5L3 14L4.5 9.5L1 6H5.5L8 1.5Z" fill="#060c1c"/></svg>
+      </div>
+      <span style="font-family:Montserrat;font-weight:800;font-size:.95rem;letter-spacing:-.01em;">
+        <span class="gold-text">Finansowy</span><span style="color:rgba(240,240,240,.88);"> Reset</span>
+      </span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 font-body text-sm" style="color:var(--muted);">
+      <a href="#content" class="hover:text-white transition-colors">Co Otrzymasz</a>
+      <a href="#author"  class="hover:text-white transition-colors">O Autorze</a>
+      <a href="#opinions" class="hover:text-white transition-colors">Opinie</a>
+      <a href="#faq"    class="hover:text-white transition-colors">FAQ</a>
+    </div>
+
+    <a href="#buy" class="btn-gold hidden sm:block px-5 py-2.5 rounded-xl text-sm">Kup Pakiet — 127 zł</a>
+  </div>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="relative min-h-screen flex items-center justify-center text-center px-6 pt-20 dot-grid overflow-hidden">
+  <div class="glow" style="width:750px;height:650px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(255,215,0,.09),transparent 65%);"></div>
+  <div class="glow" style="width:360px;height:360px;bottom:0;left:6%;background:radial-gradient(ellipse,rgba(184,115,51,.07),transparent 70%);"></div>
+
+  <!-- corner ornaments -->
+  <div class="absolute top-24 left-8 opacity-10" style="width:48px;height:48px;border-top:1px solid #FFD700;border-left:1px solid #FFD700;"></div>
+  <div class="absolute top-24 right-8 opacity-10" style="width:48px;height:48px;border-top:1px solid #FFD700;border-right:1px solid #FFD700;"></div>
+
+  <div class="relative max-w-4xl mx-auto">
+
+    <div class="anim-up d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs mb-8 font-body" style="border:1px solid rgba(255,215,0,.22);background:rgba(255,215,0,.06);color:rgba(255,215,0,.82);letter-spacing:.12em;font-weight:500;text-transform:uppercase;">
+      <span class="anim-dot w-1.5 h-1.5 rounded-full inline-block" style="background:#FFD700;"></span>
+      Pakiet Premium: E-book + Audiobook + Bonusy
+    </div>
+
+    <h1 class="anim-up d2 font-display font-black leading-none mb-5" style="font-size:clamp(2.8rem,7vw,6rem);letter-spacing:-.03em;">
+      Finansowy Reset.<br/>
+      <span class="shimmer">Instrukcja na nowe czasy.</span>
+    </h1>
+
+    <p class="anim-up d3 font-body text-xl md:text-2xl mb-10 mx-auto max-w-2xl leading-relaxed" style="color:rgba(240,240,240,.5);font-weight:300;">
+      Odkryj, jak zbudować system finansowy, który pracuje na Twoją wolność&nbsp;–&nbsp;bez strachu, bez szumu, na własnych zasadach.
+    </p>
+
+    <div class="anim-up d4">
+      <a href="#buy" class="btn-gold inline-flex items-center gap-3 px-10 py-5 rounded-2xl text-base">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v9M5 8l4 4 4-4M3 15h12" stroke="#060c1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Kup Dostęp za 127 zł
+      </a>
+      <p class="mt-4 font-body text-sm" style="color:rgba(240,240,240,.25);">E-book · Audiobook · Bonusy · Natychmiastowy dostęp</p>
+    </div>
+
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0 h-44 pointer-events-none" style="background:linear-gradient(to bottom,transparent,var(--bg));"></div>
+</section>
+
+
+<!-- ═══ PROBLEM ═══ -->
+<section id="problem" class="py-28 px-6 relative overflow-hidden">
+  <div class="glow" style="width:500px;height:420px;top:50%;left:-120px;transform:translateY(-50%);background:radial-gradient(ellipse,rgba(184,115,51,.07),transparent 70%);"></div>
+  <div class="max-w-5xl mx-auto">
+    <div class="rv hr-d mb-14"><span class="section-label">Dlaczego teraz?</span></div>
+
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+      <div class="rv">
+        <h2 class="font-display font-black leading-tight mb-6" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;">
+          Świat się zmienił.<br/>
+          <span class="gold-text">Twoje pieniądze też muszą.</span>
+        </h2>
+        <p class="font-body leading-relaxed mb-4" style="color:rgba(240,240,240,.58);font-size:1.05rem;">
+          Przez lata obserwowałem świat z różnych perspektyw. Jedno jest pewne: tempo zmian jest dziś inne niż dekadę temu.
+        </p>
+        <p class="font-body leading-relaxed" style="color:rgba(240,240,240,.58);font-size:1.05rem;">
+          AI, inflacja, niestabilność rynków – to nowa rzeczywistość. Czy nadal funkcjonujesz według starych zasad, licząc że „jakoś to będzie"? <strong style="color:rgba(240,240,240,.9);">Trzymanie pieniędzy w miejscu to już nie bezpieczeństwo – to ryzyko.</strong>
+        </p>
+      </div>
+
+      <div class="rv rv2 space-y-3">
+        <div class="card rounded-xl px-5 py-4 flex items-center gap-4 font-body text-sm" style="color:rgba(240,240,240,.62);">
+          <span class="text-xl flex-shrink-0">😰</span> Nie wiesz, gdzie uciekają pieniądze każdego miesiąca
+        </div>
+        <div class="card rounded-xl px-5 py-4 flex items-center gap-4 font-body text-sm" style="color:rgba(240,240,240,.62);">
+          <span class="text-xl flex-shrink-0">📉</span> Inflacja zjada oszczędności trzymane na koncie
+        </div>
+        <div class="card rounded-xl px-5 py-4 flex items-center gap-4 font-body text-sm" style="color:rgba(240,240,240,.62);">
+          <span class="text-xl flex-shrink-0">😵</span> Rynki wyglądają na nieprzewidywalne i groźne
+        </div>
+        <div class="card rounded-xl px-5 py-4 flex items-center gap-4 font-body text-sm" style="color:rgba(240,240,240,.62);">
+          <span class="text-xl flex-shrink-0">🔄</span> Stare zasady oszczędzania już nie wystarczają
+        </div>
+        <div class="card rounded-xl px-5 py-4 flex items-center gap-4 font-body text-sm" style="color:rgba(240,240,240,.62);">
+          <span class="text-xl flex-shrink-0">⏰</span> Każdy miesiąc bez systemu to utracony czas i kapitał
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ CONTENT (6 filarów) ═══ -->
+<section id="content" class="py-28 px-6 relative overflow-hidden">
+  <div class="glow" style="width:600px;height:500px;top:50%;right:-150px;transform:translateY(-50%);background:radial-gradient(ellipse,rgba(255,215,0,.05),transparent 70%);"></div>
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 rv">
+      <div class="hr-d mb-5"><span class="section-label">Zawartość Pakietu</span></div>
+      <h2 class="font-display font-black leading-tight" style="font-size:clamp(2rem,4.5vw,3.5rem);letter-spacing:-.02em;">
+        Co znajdziesz w<br/>
+        <span class="gold-text">„Finansowym Resecie"?</span>
+      </h2>
+      <p class="font-body text-lg mt-4 mx-auto max-w-2xl" style="color:rgba(240,240,240,.48);">
+        To nie jest kolejny nudny e-book. To kompletna instrukcja obsługi Twoich finansów na nowe czasy.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Filar 1 -->
+      <div class="rv rv1 card rounded-2xl p-8 relative overflow-hidden">
+        <div class="pillar-num">01</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#FFD700" stroke-width="1.8"/><path d="M11 7v4l2.5 2.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Diagnoza Świata i Fundamenty</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Zrozumiesz, dlaczego stare zasady oszczędzania przestały działać. Zbudujesz solidną poduszkę finansową i poznasz strategiczną rolę dywersyfikacji oraz złota w niestabilnych czasach.</p>
+      </div>
+
+      <!-- Filar 2 -->
+      <div class="rv rv2 card rounded-2xl p-8 relative overflow-hidden">
+        <div class="pillar-num">02</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 16l4-4 4 4 5-8" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Proste, Pasywne Inwestowanie</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Odkryjesz potęgę funduszy ETF. Nauczysz się budować globalny portfel inwestycyjny, który pracuje dla Ciebie przy minimalnym wysiłku i niskich kosztach.</p>
+      </div>
+
+      <!-- Filar 3 -->
+      <div class="rv rv3 card rounded-2xl p-8 relative overflow-hidden">
+        <div class="pillar-num">03</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v1M11 17v1M4 11H3M19 11h-1M6.34 6.34l-.7-.7M16.36 16.36l-.7-.7M6.34 15.66l-.7.7M16.36 5.64l-.7.7" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/><circle cx="11" cy="11" r="3.5" stroke="#FFD700" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Psychologia i Trening Mentalny</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Nauczysz się zarządzać strachem i chciwością. Zrozumiesz, dlaczego spokój jest Twoją największą przewagą na rynku i jak go trenować każdego dnia.</p>
+      </div>
+
+      <!-- Filar 4 -->
+      <div class="rv rv2 card rounded-2xl p-8 relative overflow-hidden">
+        <div class="pillar-num">04</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h4l3-7 4 14 3-7h4" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Brutalna Prawda o Tradingu</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Demistyfikacja spekulacji. Sprawdzisz, czy masz predyspozycje do aktywnego tradingu — bez kosztownych eksperymentów i złudzeń o szybkim zarobku.</p>
+      </div>
+
+      <!-- Filar 5 -->
+      <div class="rv rv3 card rounded-2xl p-8 relative overflow-hidden">
+        <div class="pillar-num">05</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#FFD700" stroke-width="1.8"/><path d="M7 11l2.5 2.5L15 8" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Kompetencje i Rozwój</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Inwestycja w siebie ma najwyższy zwrot z inwestycji. Dowiesz się, jakie kompetencje budować w nowej, dynamicznej rzeczywistości gospodarczej.</p>
+      </div>
+
+      <!-- Filar 6 -->
+      <div class="rv rv4 card rounded-2xl p-8 relative overflow-hidden" style="border-color:rgba(255,215,0,.22);background:linear-gradient(135deg,rgba(255,215,0,.07),rgba(255,215,0,.02));">
+        <div class="pillar-num">06</div>
+        <div class="icon-ring mb-5">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 16V8M10 16V5M14 16v-6M18 16v-3" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:#ffe680;">Plan 90 Dni do Automatyzacji</h3>
+        <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">Konkretna mapa drogowa. Krok po kroku przejdziesz od finansowego chaosu do w pełni zautomatyzowanego systemu, który działa bez Twojego ciągłego nadzoru.</p>
+      </div>
+
+    </div>
+
+    <!-- Bonus strip -->
+    <div class="rv mt-6 card rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5" style="border-color:rgba(255,215,0,.18);">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl" style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);">🎁</div>
+      <div>
+        <div class="font-display font-bold mb-1" style="color:#ffe680;">Bonusy dołączone do pakietu</div>
+        <div class="font-body text-sm" style="color:rgba(240,240,240,.5);">
+          Arkusz „Wskaźnik Spokoju" (Excel) &nbsp;·&nbsp; Checklista „Anty-Emocjonalny Manifest Inwestora" &nbsp;·&nbsp; Cykliczne raporty rynkowe na e-mail
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ AUTHOR ═══ -->
+<section id="author" class="py-28 px-6 relative overflow-hidden">
+  <div class="glow" style="width:500px;height:500px;top:50%;left:-150px;transform:translateY(-50%);background:radial-gradient(ellipse,rgba(255,215,0,.04),transparent 70%);"></div>
+  <div class="max-w-5xl mx-auto">
+    <div class="rv hr-d mb-14"><span class="section-label">Poznaj Przewodnika</span></div>
+
+    <div class="grid md:grid-cols-5 gap-12 items-start">
+
+      <!-- Avatar + credentials -->
+      <div class="rv md:col-span-2 flex flex-col items-center gap-6">
+        <div class="author-avatar">
+          <div>
+            <div class="font-display font-black text-5xl gold-text text-center">K</div>
+            <div class="font-body text-xs text-center mt-1" style="color:rgba(240,240,240,.28);letter-spacing:.12em;text-transform:uppercase;">Kamil</div>
+          </div>
+          <div class="author-avatar-ring"></div>
+          <div class="author-avatar-ring2"></div>
+        </div>
+        <!-- stat boxes -->
+        <div class="grid grid-cols-2 gap-3 w-full">
+          <div class="stat-box">
+            <div class="stat-num">100k</div>
+            <div class="font-body text-xs mt-1" style="color:rgba(240,240,240,.38);">USD kapitał</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">500+</div>
+            <div class="font-body text-xs mt-1" style="color:rgba(240,240,240,.38);">live'ów edu</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">2019</div>
+            <div class="font-body text-xs mt-1" style="color:rgba(240,240,240,.38);">rok startu</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">∞</div>
+            <div class="font-body text-xs mt-1" style="color:rgba(240,240,240,.38);">wolność</div>
+          </div>
+        </div>
+        <!-- credential pills -->
+        <div class="flex flex-wrap gap-2 justify-center">
+          <span class="cred-pill"><span>💹</span> Funded Trader</span>
+          <span class="cred-pill"><span>📊</span> Forex · Akcje · Krypto</span>
+          <span class="cred-pill"><span>🔗</span> Analiza on-chain</span>
+          <span class="cred-pill"><span>📐</span> Smart Money Concepts</span>
+          <span class="cred-pill"><span>🌍</span> Digital nomad</span>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="rv rv2 md:col-span-3">
+        <h2 class="font-display font-black leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.02em;">
+          Praktyk. Inwestor.<br/>
+          <span class="gold-text">Człowiek, który zbudował wolność.</span>
+        </h2>
+
+        <p class="font-body mb-4 leading-relaxed" style="color:rgba(240,240,240,.62);font-size:1.02rem;">
+          Cześć, jestem <strong style="color:white;">Kamil</strong>. Inwestor i strateg finansowy z tytułem Funded Trader — zarządzam kapitałem 100 000 USD na rynku Forex. Od 2019 roku aktywnie inwestuję w akcje, surowce i kryptowaluty, łącząc analizę techniczną z podejściem Smart Money Concepts i danymi on-chain.
+        </p>
+
+        <p class="font-body mb-6 leading-relaxed" style="color:rgba(240,240,240,.62);font-size:1.02rem;">
+          Przez lata przeprowadziłem kilkaset live'ów edukacyjnych z zakresu tradingu, analizy kryptowalut i strategii Smart Money — dzieląc się wiedzą z dziesiątkami tysięcy osób. Dziś łączę to z życiem w podróży: niezależny od miejsca i czasu, z laptopem, rynkami i własnym systemem finansowym, który działa za mnie.
+        </p>
+
+        <div class="pullquote rounded-2xl p-6 mb-0">
+          <div class="big-q">"</div>
+          <p class="font-display font-semibold text-base italic leading-relaxed -mt-4" style="color:rgba(240,240,240,.85);">
+            Ten styl życia nie jest przypadkiem. To wynik systemu. „Finansowy Reset" to moja instrukcja — przekazuję Ci go w całości.
+          </p>
+          <div class="mt-3 font-body text-xs" style="color:rgba(255,215,0,.55);">— Kamil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="opinions" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14 rv">
+      <div class="hr-d mb-5"><span class="section-label">Opinie</span></div>
+      <h2 class="font-display font-black leading-tight" style="font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;">
+        Ich Finansowy Reset<br/>
+        <span class="gold-text">już się zaczął.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="rv rv1 tcard rounded-2xl p-7">
+        <div class="flex gap-0.5 mb-4" style="color:#FFD700;font-size:.9rem;">★★★★★</div>
+        <div class="big-q" style="font-size:3.2rem;line-height:.5;margin-bottom:.9rem;">"</div>
+        <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(240,240,240,.68);">
+          To pierwszy materiał o finansach, który nie wywołał u mnie presji, tylko spokój. Wszystko podane bardzo prosto i logicznie.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0" style="background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.2);color:#FFD700;">A</div>
+          <div>
+            <div class="font-body font-semibold text-sm text-white">Adam</div>
+            <div class="font-body text-xs" style="color:rgba(240,240,240,.3);">Czytelnik</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv rv2 tcard rounded-2xl p-7">
+        <div class="flex gap-0.5 mb-4" style="color:#FFD700;font-size:.9rem;">★★★★★</div>
+        <div class="big-q" style="font-size:3.2rem;line-height:.5;margin-bottom:.9rem;">"</div>
+        <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(240,240,240,.68);">
+          Jeśli ktoś zaczyna i czuje chaos w głowie, ten PDF to idealny punkt startowy. W końcu ktoś poukładał to normalnym językiem.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0" style="background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.2);color:#FFD700;">M</div>
+          <div>
+            <div class="font-body font-semibold text-sm text-white">Michał</div>
+            <div class="font-body text-xs" style="color:rgba(240,240,240,.3);">Czytelnik</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv rv3 tcard rounded-2xl p-7">
+        <div class="flex gap-0.5 mb-4" style="color:#FFD700;font-size:.9rem;">★★★★★</div>
+        <div class="big-q" style="font-size:3.2rem;line-height:.5;margin-bottom:.9rem;">"</div>
+        <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(240,240,240,.68);">
+          Bardzo doceniam podejście do tradingu. Zero bajek, zero obietnic. W końcu ktoś mówi jak to naprawdę działa.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0" style="background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.2);color:#FFD700;">A</div>
+          <div>
+            <div class="font-body font-semibold text-sm text-white">Adrian</div>
+            <div class="font-body text-xs" style="color:rgba(240,240,240,.3);">Czytelnik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ BUY ═══ -->
+<section id="buy" class="py-28 px-6 relative overflow-hidden text-center">
+  <div class="glow" style="width:800px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(255,215,0,.07),transparent 65%);"></div>
+  <div class="max-w-xl mx-auto relative">
+
+    <div class="rv hr-d mb-10"><span class="section-label">Dołącz teraz</span></div>
+    <h2 class="rv font-display font-black leading-tight mb-4" style="font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.03em;">
+      Twój Finansowy Reset<br/>
+      <span class="gold-text">zaczyna się dzisiaj.</span>
+    </h2>
+    <p class="rv rv1 font-body text-lg mb-12 leading-relaxed" style="color:rgba(240,240,240,.48);">
+      Zbuduj swoją finansową twierdzę i odzyskaj kontrolę. Czas na świadome decyzje.
+    </p>
+
+    <!-- Offer box -->
+    <div class="rv rv2 offer-box rounded-3xl p-8 md:p-10 mb-6 text-left">
+
+      <div class="text-center mb-8">
+        <div class="font-body text-sm mb-2" style="color:rgba(240,240,240,.4);letter-spacing:.1em;text-transform:uppercase;">Pakiet Premium</div>
+        <div class="font-display font-black" style="font-size:4rem;line-height:1;background:linear-gradient(135deg,#ffe680,#FFD700,#c9a800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          127 <span style="font-size:2rem;font-weight:600;">PLN</span>
+        </div>
+        <div class="font-body text-sm mt-1" style="color:rgba(240,240,240,.3);">jednorazowo · bez subskrypcji · bez ukrytych kosztów</div>
+      </div>
+
+      <div class="space-y-3 mb-8">
+        <div class="check-li font-body text-sm">E-book PDF — kompletny przewodnik finansowy </div>
+        <div class="check-li font-body text-sm">Audiobook — czytany przez Kamila, do słuchania gdziekolwiek jesteś</div>
+        <div class="check-li font-body text-sm">Arkusz „Wskaźnik Spokoju" (Excel)</div>
+        <div class="check-li font-body text-sm">Checklista „Anty-Emocjonalny Manifest Inwestora"</div>
+        <div class="check-li font-body text-sm">Dostęp do cyklicznych raportów rynkowych na e-mail</div>
+        <div class="check-li font-body text-sm">Dostęp natychmiastowy po zakupie</div>
+      </div>
+
+      <!-- ⚡ REPLACE href WITH YOUR STRIPE LINK -->
+      <a href="TWOJ_LINK_STRIPE_TUTAJ" class="btn-gold block w-full py-5 rounded-2xl text-center text-base">
+        Kupuję i Zaczynam Reset →
+      </a>
+
+      <div class="flex items-center justify-center gap-2 mt-4">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1a5.5 5.5 0 100 11A5.5 5.5 0 006.5 1zm0 5v3M6.5 4.5V4" stroke="rgba(240,240,240,.22)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="font-body text-xs" style="color:rgba(240,240,240,.25);">Bezpieczna płatność przez Stripe · Dostęp natychmiastowy</span>
+      </div>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="rv rv3 flex items-center gap-4 text-left rounded-2xl p-5" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);">
+      <div class="w-14 h-14 flex-shrink-0 rounded-full flex items-center justify-center text-2xl" style="background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.18);">🛡️</div>
+      <div>
+        <div class="font-display font-bold text-sm mb-1" style="color:#ffe680;">Gwarancja satysfakcji</div>
+        <div class="font-body text-xs leading-relaxed" style="color:rgba(240,240,240,.42);">
+          Jeśli materiał nie spełni Twoich oczekiwań — napisz. Podejdę do każdej sytuacji uczciwie i indywidualnie.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq" class="py-28 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14 rv">
+      <div class="hr-d mb-5"><span class="section-label">FAQ</span></div>
+      <h2 class="font-display font-black leading-tight" style="font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;">
+        Masz pytania?<br/><span class="gold-text">Mam odpowiedzi.</span>
+      </h2>
+    </div>
+
+    <div class="rv space-y-3">
+
+      <details class="card rounded-2xl" open>
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">W jakiej formie otrzymam materiały?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Po zakupie natychmiast otrzymasz e-mail z linkiem do pobrania e-booka w formacie PDF oraz audiobooka w formacie MP3. Wszystko dostępne od razu — bez czekania.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Dla kogo jest ten „Finansowy Reset"?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Dla każdego, kto czuje, że stare zasady finansowe już nie działają i szuka spokoju, kontroli oraz jasnego planu. Nie jest dla osób szukających szybkich zysków bez wysiłku.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Czy potrzebuję wiedzy o finansach, żeby zacząć?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Absolutnie nie. Pakiet zaprojektowany jest dla osób zaczynających od zera — wszystkie koncepcje tłumaczone są prostym językiem, krok po kroku.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Czy to jest kurs tradingu?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Nie. To fundament pod każdą decyzję finansową. Zawiera rozdział o tradingu, który brutalnie szczerze pokazuje kiedy ma on sens, a kiedy nie — zero sygnałów, czysta strategia.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Czy to jest jednorazowa opłata?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Tak. 127 zł to jednorazowa opłata za cały pakiet. Żadnych subskrypcji, żadnych ukrytych kosztów.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Co jeśli mam więcej pytań?</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.52);">
+            Na końcu „Finansowego Resetu" znajdziesz dane kontaktowe. Chętnie odpowiem i pomogę Ci na drodze do wolności finansowej.
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="border-top:1px solid rgba(255,255,255,.05);" class="py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="gold-rule mb-10"></div>
+    <div class="grid md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#FFD700,#c9a800);">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L10.5 6H15L11.5 9.5L13 14L8 11.5L3 14L4.5 9.5L1 6H5.5L8 1.5Z" fill="#060c1c"/></svg>
+          </div>
+          <span style="font-family:Montserrat;font-weight:800;font-size:.9rem;">
+            <span class="gold-text">Finansowy</span><span style="color:rgba(240,240,240,.85);"> Reset</span>
+          </span>
+        </div>
+        <p class="font-body text-xs leading-relaxed max-w-xs" style="color:rgba(240,240,240,.3);">Edukacyjny pakiet finansowy stworzony przez Kamila. E-book + Audiobook + Bonusy dla tych, którzy chcą zbudować system finansowy na własnych zasadach.</p>
+      </div>
+      <div>
+        <div class="section-label mb-4">Strona</div>
+        <ul class="space-y-2">
+          <li><a href="#content"  class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Co Otrzymasz</a></li>
+          <li><a href="#author"   class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">O Autorze</a></li>
+          <li><a href="#opinions" class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Opinie</a></li>
+          <li><a href="#faq"      class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">FAQ</a></li>
+          <li><a href="#buy"      class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Kup teraz</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label mb-4">Prawne</div>
+        <ul class="space-y-2">
+          <li><a href="#" class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Polityka prywatności</a></li>
+          <li><a href="#" class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Regulamin</a></li>
+          <li><a href="#" class="font-body text-sm hover:text-white transition-colors" style="color:rgba(240,240,240,.38);">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="gold-rule mb-6"></div>
+    <div class="flex flex-col md:flex-row items-center justify-between gap-3 font-body text-xs" style="color:rgba(240,240,240,.18);">
+      <span>© 2025 Finansowy Reset · Kamil. Wszelkie prawa zastrzeżone.</span>
+      <span class="text-center">Treści mają charakter wyłącznie edukacyjny i nie stanowią porady inwestycyjnej ani finansowej.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  // FAQ: close others when one opens
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) document.querySelectorAll('details').forEach(x => { if (x !== d) x.open = false; });
+    });
+  });
+
+  // Nav: hide on scroll down, show on scroll up
+  let lastY = 0;
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.style.transform = (y > lastY && y > 80) ? 'translateY(-100%)' : 'translateY(0)';
+    lastY = y;
+  }, { passive: true });
+</script>
+</body>
+</html>
