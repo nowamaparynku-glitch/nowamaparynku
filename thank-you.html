@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Witaj w Finansowym Resecie | Kamil</title>
+  <meta name="description" content="Płatność zakończona. Pierwszy krok systemu już czeka na Ciebie." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg:     #060c1c;
+      --bg2:    #0A1128;
+      --bg3:    #0d1535;
+      --gold:   #FFD700;
+      --gold2:  #c9a800;
+      --gold3:  #ffe680;
+      --text:   #F0F0F0;
+      --muted:  rgba(240,240,240,0.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle noise */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9000; opacity: 0.28;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #FFD76A 0%, #F5C542 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .shimmer {
+      background: linear-gradient(90deg, #FFD76A 0%, #F5C542 50%, #FFD76A 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 3.5s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: -300% center; } }
+
+    .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.28), transparent); }
+    .dot-grid  { background-image: radial-gradient(circle, rgba(255,215,0,0.055) 1px, transparent 1px); background-size: 38px 38px; }
+    .glow      { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(90px); }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold2);
+    }
+    .hr-d { display: flex; align-items: center; gap: 16px; }
+    .hr-d::before { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.28)); }
+    .hr-d::after  { content:''; flex:1; height:1px; background: linear-gradient(90deg, rgba(255,215,0,0.28), transparent); }
+
+    .nav-bar {
+      background: rgba(6,12,28,0.88);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(255,215,0,0.07);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFD76A 0%, #F5C542 100%);
+      color: #0B0F1A;
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      letter-spacing: .025em;
+      position: relative; overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(245,197,66,.25);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-gold::before {
+      content: ''; position: absolute; top:0; left:-100%; width:100%; height:100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      transition: left .45s;
+    }
+    .btn-gold:hover::before { left: 100%; }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,197,66,.35); }
+    .btn-ghost {
+      border: 1px solid rgba(255,215,0,.28); color: var(--gold3);
+      font-family: 'Montserrat', sans-serif; font-weight: 600;
+      transition: all .25s ease;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(255,215,0,.07); }
+
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,215,0,.1);
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .card:hover { border-color: rgba(255,215,0,.32); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(255,215,0,.06); }
+
+    .step-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 3.5rem;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(255,215,0,.5), rgba(255,215,0,.15));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Task box - the heart of the page */
+    .task-box {
+      background: linear-gradient(135deg, rgba(26,42,94,.88), rgba(13,21,53,.95));
+      border: 1px solid rgba(255,215,0,.3);
+      box-shadow: 0 0 80px rgba(255,215,0,.07), inset 0 1px 0 rgba(255,215,0,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .task-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,.6), transparent);
+    }
+
+    .check-circle {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,215,0,.18), rgba(255,215,0,.04));
+      border: 1px solid rgba(255,215,0,.35);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 40px rgba(255,215,0,.15);
+    }
+
+    /* Animations */
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(255,215,0,.35); }
+      70% { box-shadow: 0 0 0 18px rgba(255,215,0,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,215,0,0); }
+    }
+
+    .anim-up   { animation: fadeUp .75s ease both; }
+    .pulse-ring { animation: pulseRing 2.4s ease-out infinite; }
+
+    .d1 { animation-delay:.1s;  } .d2 { animation-delay:.25s; }
+    .d3 { animation-delay:.4s;  } .d4 { animation-delay:.55s; }
+    .d5 { animation-delay:.7s;  } .d6 { animation-delay:.85s; }
+
+    .rv { opacity:0; transform:translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.on { opacity:1; transform:translateY(0); }
+    .rv1 { transition-delay:.05s; } .rv2 { transition-delay:.13s; }
+    .rv3 { transition-delay:.21s; } .rv4 { transition-delay:.29s; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Top bar ── -->
+  <nav class="nav-bar fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-display font-extrabold text-lg tracking-tight">
+        <span class="gold-text">Finansowy</span> <span class="text-white">Reset</span>
+      </a>
+      <a href="mailto:info@nowamaparynku.pl" class="font-body text-sm" style="color:rgba(240,240,240,.6);">
+        Pomoc: info@nowamaparynku.pl
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── HERO: Confirmation ── -->
+  <section class="relative pt-36 pb-20 overflow-hidden">
+    <div class="absolute inset-0 dot-grid opacity-50"></div>
+    <div class="glow" style="width:600px; height:600px; top:-200px; left:50%; transform:translateX(-50%); background:radial-gradient(circle, rgba(255,215,0,.08), transparent 70%);"></div>
+
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+
+      <!-- Pulsing check -->
+      <div class="flex justify-center mb-8 anim-up d1">
+        <div class="check-circle pulse-ring">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12.5L10 17.5L19 7.5" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="section-label mb-4 anim-up d2">Płatność zakończona</p>
+
+      <h1 class="font-display font-black leading-[1.05] mb-6 anim-up d3" style="font-size: clamp(2.4rem, 6vw, 4.2rem);">
+        Witaj w <span class="gold-text">Finansowym Resecie</span>.
+      </h1>
+
+      <p class="font-body text-lg md:text-xl leading-relaxed anim-up d4" style="color:rgba(240,240,240,.78);">
+        Jestem Kamil. Cieszę się, że jesteś.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gold rule -->
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="gold-rule"></div>
+  </div>
+
+  <!-- ── SECTION 2: Reset expectations ── -->
+  <section class="py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <p class="section-label text-center mb-6 rv rv1">Zanim zaczniesz</p>
+
+      <h2 class="font-display font-bold text-center leading-tight mb-10 rv rv2" style="font-size: clamp(1.8rem, 4vw, 2.6rem);">
+        To nie jest <span class="gold-text">ebook</span> do przeczytania w weekend.
+      </h2>
+
+      <div class="space-y-5 font-body text-lg md:text-xl leading-relaxed text-center rv rv3" style="color:rgba(240,240,240,.78);">
+        <p>
+          Finansowy Reset to <span class="text-white font-semibold">system</span>.
+          Działa wtedy, kiedy go wdrożysz – nie wtedy, kiedy go skończysz czytać.
+        </p>
+        <p style="color:var(--gold3);" class="font-semibold">
+          Zacznij we właściwej kolejności.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: 3 steps ── -->
+  <section class="py-12 md:py-16 relative">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="hr-d mb-12 rv rv1">
+        <span class="section-label">Co teraz</span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 md:gap-6">
+
+        <!-- Step 1 -->
+        <div class="card rounded-2xl p-7 relative rv rv1">
+          <div class="step-num mb-3">1</div>
+          <h3 class="font-display font-bold text-xl mb-3 text-white">
+            Sprawdź skrzynkę
+          </h3>
+          <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.7);">
+            Wysłałem Ci pierwszego maila z dostępem do wszystkich materiałów.
+            Powinien dotrzeć w ciągu 2 minut.
+          </p>
+          <p class="font-body text-xs mt-4" style="color:var(--gold3);">
+            Nie widzisz? Zerknij do folderu <span class="font-semibold">Oferty / Spam</span>.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card rounded-2xl p-7 relative rv rv2">
+          <div class="step-num mb-3">2</div>
+          <h3 class="font-display font-bold text-xl mb-3 text-white">
+            Zacznij od Manifestu
+          </h3>
+          <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.7);">
+            Większość ludzi skanuje spis treści i zaczyna od tego, co wydaje im się "najbardziej praktyczne".
+          </p>
+          <p class="font-body text-sm mt-3 text-white">
+            Manifest jest tam pierwszy z konkretnego powodu. 15 minut – ufaj procesowi.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card rounded-2xl p-7 relative rv rv3">
+          <div class="step-num mb-3">3</div>
+          <h3 class="font-display font-bold text-xl mb-3 text-white">
+            Wykonaj pierwsze zadanie
+          </h3>
+          <p class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.7);">
+            Zanim cokolwiek przeczytasz – jedna rzecz, 60 sekund.
+          </p>
+          <p class="font-body text-sm mt-3" style="color:var(--gold3);">
+            ↓ Szczegóły poniżej.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: First task (the hero of the page) ── -->
+  <section class="py-16 md:py-24 relative">
+    <div class="absolute inset-0 dot-grid opacity-40"></div>
+    <div class="glow" style="width:500px; height:500px; top:50%; left:-200px; transform:translateY(-50%); background:radial-gradient(circle, rgba(255,215,0,.06), transparent 70%);"></div>
+
+    <div class="relative max-w-3xl mx-auto px-6">
+
+      <div class="task-box rounded-3xl p-8 md:p-12 rv rv1">
+
+        <p class="section-label mb-4 text-center" style="color:var(--gold);">
+          Pierwsze zadanie · 60 sekund
+        </p>
+
+        <h2 class="font-display font-bold text-center leading-tight mb-8" style="font-size: clamp(1.6rem, 3.6vw, 2.2rem);">
+          Zapisz swój <span class="gold-text">Wskaźnik Spokoju</span>
+        </h2>
+
+        <div class="gold-rule mb-8"></div>
+
+        <p class="font-body text-base md:text-lg leading-relaxed mb-6" style="color:rgba(240,240,240,.85);">
+          Zanim zaczniesz czytać, weź kartkę albo notatnik w telefonie i zapisz jedną liczbę:
+        </p>
+
+        <div class="rounded-2xl p-6 md:p-8 mb-6" style="background: rgba(255,215,0,.06); border: 1px solid rgba(255,215,0,.25);">
+          <p class="font-display font-bold text-xl md:text-2xl leading-snug text-center" style="color:var(--gold3);">
+            "Ile miesięcy mojego życia bez pracy<br/>pokrywają moje obecne oszczędności?"
+          </p>
+        </div>
+
+        <p class="font-body text-base leading-relaxed mb-6" style="color:rgba(240,240,240,.78);">
+          Nie kombinuj. Nie licz dokładnie. Rzut oka, pierwsza intuicyjna odpowiedź.
+          Zapisz datę: <span class="text-white font-semibold">dzisiaj</span>.
+        </p>
+
+        <div class="gold-rule mb-6"></div>
+
+        <p class="font-body text-base leading-relaxed text-center" style="color:var(--gold3);">
+          Po 30 dniach pracy z systemem wrócimy do tej liczby.<br/>
+          <span class="text-white font-semibold">Zobaczysz różnicę.</span>
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: What's coming next ── -->
+  <section class="py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <div class="hr-d mb-10 rv rv1">
+        <span class="section-label">Co dalej</span>
+      </div>
+
+      <div class="card rounded-2xl p-8 md:p-10 rv rv2">
+
+        <div class="flex items-start gap-5 mb-6">
+          <div class="icon-ring flex-shrink-0" style="width:48px; height:48px; border-radius:14px; background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.2); display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8L10.89 13.26C11.5658 13.7065 12.4342 13.7065 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-xl md:text-2xl mb-2 text-white">
+              Trzymaj rękę na skrzynce
+            </h3>
+            <p class="font-body text-base leading-relaxed" style="color:rgba(240,240,240,.7);">
+              Przez najbliższe dni będę pisał do Ciebie regularnie. Kolejne narzędzia, kontekst do rozdziałów, czasem coś osobistego.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-xl p-5" style="background: rgba(255,215,0,.04); border-left: 3px solid rgba(255,215,0,.45);">
+          <p class="font-body text-base leading-relaxed" style="color:var(--gold3);">
+            To <span class="font-semibold text-white">część systemu</span>, a nie newsletter. Każdy mail ma rolę – traktuj to jak kolejne kroki, nie jak treść do przewinięcia.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 6: P.S. about reinvestment ── -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+
+      <p class="section-label mb-5 rv rv1">P.S.</p>
+
+      <p class="font-body text-base md:text-lg leading-relaxed mb-4 rv rv2" style="color:rgba(240,240,240,.78);">
+        Wszystko, co zarabiam na tym projekcie, idzie 1:1 w jego rozwój – kolejne narzędzia, materiały, audio, edukację dla większej grupy ludzi.
+      </p>
+
+      <p class="font-body text-base md:text-lg leading-relaxed rv rv3" style="color:var(--gold3);">
+        Dzięki, że jesteś częścią tej drogi od początku.
+      </p>
+
+      <p class="font-display font-semibold text-base mt-8 rv rv4 text-white" style="letter-spacing: .02em;">
+        — Kamil
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Gold rule -->
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="gold-rule"></div>
+  </div>
+
+  <!-- ── FOOTER: Help ── -->
+  <footer class="py-12 md:py-14">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+
+      <p class="font-body text-sm mb-3" style="color:rgba(240,240,240,.5);">
+        Mail nie przyszedł? Coś nie działa?
+      </p>
+      <a href="mailto:info@nowamaparynku.pl" class="font-display font-semibold text-base inline-block transition" style="color:var(--gold3);">
+        info@nowamaparynku.pl
+      </a>
+      <p class="font-body text-xs mt-3" style="color:rgba(240,240,240,.35);">
+        Odpowiadam osobiście.
+      </p>
+
+      <div class="mt-10" style="color:rgba(240,240,240,.25); font-family:'Inter', sans-serif; font-size:.75rem;">
+        © Finansowy Reset · nowamaparynku.pl
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scroll reveal -->
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
