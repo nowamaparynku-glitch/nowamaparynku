@@ -352,37 +352,41 @@
   <div class="absolute top-24 left-8 opacity-10" style="width:48px;height:48px;border-top:1px solid #FFD700;border-left:1px solid #FFD700;"></div>
   <div class="absolute top-24 right-8 opacity-10" style="width:48px;height:48px;border-top:1px solid #FFD700;border-right:1px solid #FFD700;"></div>
 
-  <!-- Hero inner: text + mockup -->
+  <!-- Hero inner: text + cover -->
   <div class="relative w-full max-w-6xl mx-auto">
-    <div class="flex flex-col items-center text-center">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 text-center lg:text-left">
 
-      <!-- LEFT: text column -->
-      <div class="max-w-3xl mx-auto w-full">
+      <!-- Text column -->
+      <div class="flex-1 min-w-0">
         <div class="anim-up d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs mb-8 font-body" style="border:1px solid rgba(255,215,106,.3);background:rgba(255,215,106,.07);color:rgba(255,215,106,.88);letter-spacing:.12em;font-weight:500;text-transform:uppercase;backdrop-filter:blur(6px);box-shadow:0 0 12px rgba(255,215,106,.15);">
           <span class="anim-dot w-1.5 h-1.5 rounded-full inline-block" style="background:#FFD76A;"></span>
           Pakiet Premium: E-book + Audiobook + Bonusy
         </div>
 
-        <h1 class="anim-up d2 font-display font-black mb-5" style="font-size:clamp(2.6rem,5.5vw,5rem);letter-spacing:-.03em;font-weight:800;line-height:1.1;">
+        <h1 class="anim-up d2 font-display font-black mb-5" style="font-size:clamp(2.4rem,5vw,4.5rem);letter-spacing:-.03em;font-weight:800;line-height:1.1;">
           Finansowy Reset.<br/>
           <span class="shimmer">Instrukcja na nowe czasy.</span>
         </h1>
 
-        <p class="anim-up d3 font-body mb-10 leading-relaxed mx-auto" style="font-size:1.125rem;color:rgba(255,255,255,.65);font-weight:300;line-height:1.65;max-width:640px;">
-          Zbuduj prosty model, który pracuje w tle - i <span style="font-weight:500;color:rgba(255,255,255,.85);">przestań martwić się o pieniądze</span>.
+        <p class="anim-up d3 font-body mb-10 leading-relaxed lg:mx-0 mx-auto" style="font-size:1.1rem;color:rgba(255,255,255,.62);font-weight:300;line-height:1.7;max-width:540px;">
+          E-book + Audiobook. <span style="font-weight:500;color:rgba(255,255,255,.85);">50 stron konkretnego planu</span> na Twoje finanse i inwestycje.
         </p>
 
-        <div class="anim-up d4" style="margin-top:32px;">
+        <div class="anim-up d4" style="margin-top:28px;">
           <a href="#buy" class="btn-gold inline-flex items-center gap-2 px-8 py-4 text-base" style="border-radius:12px;">
             Zaczynam mój finansowy reset
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0B0F1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <p class="mt-3 font-body text-sm" style="color:rgba(200,200,200,.5);">Natychmiastowy dostęp &nbsp;·&nbsp; Bez subskrypcji</p>
-          <p class="mt-1.5 font-body text-sm" style="color:rgba(200,200,200,.5);">✔ Wdrożenie w 1-2 wieczory &nbsp;·&nbsp; ✔ Bez codziennego sprawdzania rynku</p>
+          <p class="mt-3 font-body text-sm" style="color:rgba(200,200,200,.45);">Natychmiastowy dostęp &nbsp;·&nbsp; Bez subskrypcji</p>
         </div>
       </div>
 
-
+      <!-- Cover image -->
+      <div class="anim-up d3 flex-shrink-0 w-64 sm:w-72 lg:w-80">
+        <img src="img/cover.jpg" alt="Finansowy Reset - okładka e-booka"
+             class="w-full h-auto rounded-2xl"
+             style="box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(255,215,106,.06);border:1px solid rgba(255,215,106,.15);" />
+      </div>
 
     </div>
   </div>
@@ -566,10 +570,106 @@
           <span style="color:#FFD76A;flex-shrink:0;margin-top:2px;">🎁</span>
           <span class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.72);"><span style="font-weight:500;color:#ffe680;">Raporty rynkowe na e-mail</span> - moje spojrzenie na rynek, prosto do Twojej skrzynki.</span>
         </div>
+        <!-- Highlighted bonus -->
+        <div class="flex items-start gap-3 mt-3 rounded-xl px-4 py-3" style="background:rgba(255,215,106,.06);border:1px solid rgba(255,215,106,.18);">
+          <span style="color:#FFD76A;flex-shrink:0;margin-top:2px;">⭐</span>
+          <span class="font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.82);"><span style="font-weight:600;color:#ffe680;">Przykładowy Portfel Inwestycyjny</span> - gotowy wzorzec, który możesz zaadaptować do swoich celów.</span>
+        </div>
       </div>
     </div>
 
 
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+
+<!-- ═══ SPIS TREŚCI ═══ -->
+<section class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 rv">
+      <div class="hr-d mb-5"><span class="section-label">Co znajdziesz w środku?</span></div>
+      <h2 class="font-display font-black leading-tight" style="font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;">
+        Pełny spis <span class="gold-text">treści</span>
+      </h2>
+    </div>
+
+    <div class="rv space-y-3">
+
+      <details class="card rounded-2xl" open>
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część 0: Fundamenty Wolności</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Pieniądz jako waluta czasu. Pułapka Złotej Klatki - dlaczego wysokie zarobki nie gwarantują wolności.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część I: Diagnoza Świata</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Świat przyspieszył - i to nie jest opinia. Koszt bezczynności. Nowy paradygmat na rynkach, którego nie możesz ignorować.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część II: Twoja Twierdza</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Poduszka finansowa - Twój azyl bezpieczeństwa. Dywersyfikacja. Złoto jako cichy strażnik wartości.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część III: Strategie Wzrostu</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Inwestowanie pasywne (ETF). Procent składany. Kryptowaluty. Inwestuj z nadwyżek, nie z nadziei.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część IV: Mentalność</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Pułapki umysłu - jak opanować strach i chciwość. Spokój jako przewaga strategiczna.
+          </div>
+        </div>
+      </details>
+
+      <details class="card rounded-2xl">
+        <summary class="flex items-center justify-between px-6 py-5">
+          <span class="faq-q font-display font-semibold text-sm md:text-base" style="color:rgba(240,240,240,.88);">Część V: Spekulacja i Działanie</span>
+          <span class="faq-icon text-2xl ml-4 flex-shrink-0" style="color:rgba(255,215,0,.5);font-weight:300;">+</span>
+        </summary>
+        <div class="faq-body">
+          <div class="px-6 pb-6 font-body text-sm leading-relaxed" style="color:rgba(240,240,240,.55);">
+            Trading - brutalna prawda. Plan 90 dni - Twoja mapa drogowa. Scenariusze startowe: 500 / 2 000 / 10 000 PLN.
+          </div>
+        </div>
+      </details>
+
+    </div>
   </div>
 </section>
 
@@ -593,11 +693,15 @@
         </h2>
 
         <p class="font-body leading-relaxed mb-4" style="color:rgba(224,224,224,.72);font-size:1.02rem;line-height:1.75;">
-          Na początku robiłem dokładnie to, co większość - chaos, emocje i brak planu. Dziś zarządzam kapitałem <span style="font-weight:500;color:rgba(240,240,240,.9);">100 000 USD</span> jako Funded Trader. Prowadziłem <span style="font-weight:500;color:rgba(240,240,240,.9);">setki live'ów edukacyjnych</span>, pomagając ludziom przejść od chaotycznych decyzji do świadomego zarządzania pieniędzmi.
+          Inwestuję od 2019 roku. Zarządzam kapitałem <span style="font-weight:500;color:rgba(240,240,240,.9);">100 000 USD</span> jako Funded Trader. Przeszedłem drogę od chaosu i strat do prostego modelu, który działa.
+        </p>
+
+        <p class="font-body leading-relaxed mb-4" style="color:rgba(224,224,224,.72);font-size:1.02rem;line-height:1.75;">
+          Prowadziłem <span style="font-weight:500;color:rgba(240,240,240,.9);">setki live'ów edukacyjnych</span>, pomagając ludziom przejść od chaotycznych decyzji do świadomego zarządzania pieniędzmi.
         </p>
 
         <p class="font-body leading-relaxed mb-7" style="color:rgba(224,224,224,.72);font-size:1.02rem;line-height:1.75;">
-          Dziś prowadzę własne inwestycje z dowolnego miejsca na świecie - poświęcając na to <span style="font-weight:500;color:rgba(240,240,240,.9);">mniej niż 15 minut miesięcznie</span>. Finansowy Reset to dokładnie ten fundament, którego sam potrzebowałem na starcie.
+          Finansowy Reset to dokładnie ta wiedza, której sam szukałem na początku - <span style="font-weight:500;color:rgba(240,240,240,.9);">spisana i uporządkowana, żebyś nie musiał tracić lat na te same błędy</span>.
         </p>
 
         <!-- Cytat box -->
@@ -763,6 +867,7 @@
         <div class="check-li font-body text-sm">Arkusz „Wskaźnik Spokoju" (Excel)</div>
         <div class="check-li font-body text-sm">Checklista „Anty-Emocjonalny Manifest Inwestora"</div>
         <div class="check-li font-body text-sm">Dostęp do cyklicznych raportów rynkowych na e-mail</div>
+        <div class="check-li font-body text-sm">Przykładowy Portfel Inwestycyjny - gotowy wzorzec do adaptacji</div>
         <div class="check-li font-body text-sm">Dostęp natychmiastowy po zakupie</div>
 
         <!-- Bonus: aktualizacje -->
