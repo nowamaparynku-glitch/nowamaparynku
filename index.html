@@ -837,42 +837,51 @@
       </div>
     </div>
 
-    <!-- Offer box -->
-    <div class="rv rv2 offer-box rounded-3xl p-8 md:p-10 mb-6 text-left">
+   <!-- Offer box -->
+    <div class="rv rv2 offer-box rounded-3xl p-8 md:p-10 mb-6">
 
       <div class="text-center mb-8">
         <div class="font-body text-sm mb-2" style="color:rgba(240,240,240,.4);letter-spacing:.1em;text-transform:uppercase;">Pakiet Premium</div>
-        <div class="font-display font-black" style="font-size:4rem;line-height:1;background:linear-gradient(135deg,#ffe680,#FFD700,#c9a800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-          127 <span style="font-size:2rem;font-weight:600;">PLN</span>
-        </div>
-        <div class="font-body text-sm mt-1" style="color:rgba(240,240,240,.3);">jednorazowo · bez subskrypcji · bez ukrytych kosztów</div>
       </div>
 
-      <div class="space-y-3 mb-8">
-        <div class="check-li font-body text-sm">E-book PDF - kompletny przewodnik finansowy </div>
-        <div class="check-li font-body text-sm">Audiobook - do słuchania gdziekolwiek jesteś</div>
-        <div class="check-li font-body text-sm">Arkusz „Wskaźnik Spokoju" (Excel)</div>
-        <div class="check-li font-body text-sm">Checklista „Anty-Emocjonalny Manifest Inwestora"</div>
-        <div class="check-li font-body text-sm">Dostęp do cyklicznych raportów rynkowych na e-mail</div>
-        <div class="check-li font-body text-sm">Przykładowy Portfel Inwestycyjny - gotowy wzorzec do adaptacji</div>
-        <div class="check-li font-body text-sm">Dostęp natychmiastowy po zakupie</div>
-
-        <!-- Bonus: aktualizacje -->
-        <div style="margin-top:12px;display:flex;align-items:flex-start;gap:12px;">
-          <span style="flex-shrink:0;font-size:1rem;margin-top:1px;">⭐</span>
-          <div>
-            <div class="font-body font-semibold text-sm" style="color:rgba(240,240,240,.88);">Dożywotnie aktualizacje + pierwszeństwo na przyszłe programy</div>
-          </div>
+      <!-- Dwa produkty obok siebie -->
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="rounded-2xl p-5 text-center" style="background:rgba(255,215,106,.06);border:1px solid rgba(255,215,106,.18);">
+          <div class="text-2xl mb-2">📘</div>
+          <div class="font-display font-bold text-sm mb-1" style="color:#ffe680;">E-book PDF</div>
+          <div class="font-body text-xs" style="color:rgba(240,240,240,.45);">50 stron</div>
+        </div>
+        <div class="rounded-2xl p-5 text-center" style="background:rgba(255,215,106,.06);border:1px solid rgba(255,215,106,.18);">
+          <div class="text-2xl mb-2">🎧</div>
+          <div class="font-display font-bold text-sm mb-1" style="color:#ffe680;">Audiobook</div>
+          <div class="font-body text-xs" style="color:rgba(240,240,240,.45);">~70 min</div>
         </div>
       </div>
 
-      <a href="https://buy.stripe.com/cNiaEQ0baaygaeU4Br33W00" target="_blank" rel="noopener" class="btn-gold block w-full py-5 rounded-2xl text-center text-base">
+      <!-- Bonusy — jedna linia -->
+      <div class="rounded-xl px-5 py-3 mb-8 text-center" style="background:rgba(255,215,106,.04);border:1px solid rgba(255,215,106,.1);">
+        <div class="font-body text-xs mb-1.5" style="color:rgba(255,215,106,.6);text-transform:uppercase;letter-spacing:.08em;">+4 bonusy w pakiecie</div>
+        <div class="font-body text-sm" style="color:rgba(240,240,240,.6);">Portfel Inwestycyjny · Arkusz Spokoju · Manifest Inwestora · Raporty rynkowe</div>
+      </div>
+
+      <!-- Cena -->
+      <div class="text-center mb-6">
+        <div class="font-display font-black" style="font-size:3.5rem;line-height:1;background:linear-gradient(135deg,#ffe680,#FFD700,#c9a800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          127 <span style="font-size:1.8rem;font-weight:600;">PLN</span>
+        </div>
+        <div class="font-body text-sm mt-2" style="color:rgba(240,240,240,.35);">jednorazowo · bez subskrypcji</div>
+      </div>
+
+      <!-- CTA -->
+      <a href="https://buy.stripe.com/cNiaEQ0baaygaeU4Br33W00" target="_blank" rel="noopener" class="btn-gold block w-full py-5 rounded-2xl text-center text-lg font-display" style="font-size:1.1rem;">
         Zaczynam mój finansowy reset →
       </a>
 
-      <div class="flex items-center justify-center gap-2 mt-3">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1a5.5 5.5 0 100 11A5.5 5.5 0 006.5 1zm0 5v3M6.5 4.5V4" stroke="rgba(240,240,240,.22)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <span class="font-body text-xs" style="color:rgba(240,240,240,.25);">Bezpieczna płatność przez Stripe · Dostęp natychmiastowy</span>
+      <!-- Gwarancja pod przyciskiem -->
+      <p class="font-body text-center mt-4" style="font-size:.8rem;color:rgba(240,240,240,.35);">
+        🛡️ 30 dni na zwrot. Bez pytań.
+      </p>
+
     </div>
 
     <!-- Guarantee strip (small) -->
